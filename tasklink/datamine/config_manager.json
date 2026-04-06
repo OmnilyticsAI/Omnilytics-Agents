@@ -1,0 +1,49 @@
+export type LogLevel = "debug" | "info" | "warn" | "error"
+
+export interface LoggingConfig {
+  level: LogLevel
+  destinations: Array<"console" | "file" | "remote">
+  filePath?: string
+  remoteUrl?: string
+}
+
+export interface FeatureConfig {
+  enableDiagnostics: boolean
+  enableRealTimeAlerts: boolean
+  enableMetrics?: boolean
+  enableTracing?: boolean
+}
+
+export interface ProjectConfig {
+  projectName: string
+  environment: "development" | "staging" | "production"
+  logging: LoggingConfig
+  features: FeatureConfig
+}
+
+export class ConfigManager {
+  private config: ProjectConfig
+
+  constructor(config: ProjectConfig) {
+    this.config = config
+  }
+
+  getConfig(): ProjectConfig {
+    return this.config
+  }
+
+  update(partial: Partial<ProjectConfig>): void {
+    this.config = { ...this.config, ...partial }
+  }
+
+  isDiagnosticsEnabled(): boolean {
+    return this.config.features.enableDiagnostics
+  }
+
+  shouldLog(level: LogLevel): boolean {
+    const levels: LogLevel[] = ["debug", "info", "warn", "error"]
+    const currentIdx = levels.indexOf(this.config.logging.level)
+    const msgIdx = levels.indexOf(level)
+    return msgIdx >= currentIdx
+  }
+}
