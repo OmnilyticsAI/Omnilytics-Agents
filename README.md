@@ -1,492 +1,288 @@
-# picoLLM Inference Engine
+<p align="center">
+  <img width="400" height="400" alt="Omnilitycs AI" src="https://github.com/user-attachments/assets/02314c23-648e-4532-a004-79c0b6cb2e83" />
+</p>
 
-[![GitHub release](https://img.shields.io/github/release/Picovoice/picollm.svg)](https://github.com/Picovoice/picollm/releases)
-[![GitHub](https://img.shields.io/github/license/Picovoice/picollm)](https://github.com/Picovoice/picollm/)
+<h1 align="center">Omnilitycs AI</h1>
 
-[![Maven Central](https://img.shields.io/maven-central/v/ai.picovoice/picollm-android?label=maven-central%20%5Bandroid%5D)](https://repo1.maven.org/maven2/ai/picovoice/picollm-android/)
-[![npm](https://img.shields.io/npm/v/@picovoice/picollm-web?label=npm%20%5Bweb%5D)](https://www.npmjs.com/package/@picovoice/picollm-web)<!-- markdown-link-check-disable-line -->
-[![CocoaPods](https://img.shields.io/cocoapods/v/picoLLM-iOS)](https://cocoapods.org/pods/picoLLM-iOS)<!-- markdown-link-check-disable-line -->
-[![PyPI](https://img.shields.io/pypi/v/picollm)](https://pypi.org/project/picollm/)
-[![Nuget](https://img.shields.io/nuget/v/picollm)](https://www.nuget.org/packages/PicoLLM/)
+<div align="center">
+  <p><strong>AI-driven on-chain analytics and automation platform for traders, teams, and developers</strong></p>
+  <p>
+    Wallet intelligence • Token flows • Portfolio risk • Project monitoring • Agents • Alerts • APIs
+  </p>
+</div>
 
-Made in Vancouver, Canada by [Picovoice](https://picovoice.ai)
+---
 
-[![Twitter URL](https://img.shields.io/twitter/url?label=%40AiPicovoice&style=social&url=https%3A%2F%2Ftwitter.com%2FAiPicovoice)](https://twitter.com/AiPicovoice)<!-- markdown-link-check-disable-line -->
-[![YouTube Channel Views](https://img.shields.io/youtube/channel/views/UCAdi9sTCXLosG1XeqDwLx7w?label=YouTube&style=social)](https://www.youtube.com/channel/UCAdi9sTCXLosG1XeqDwLx7w)
+## System Definition
 
-picoLLM Inference Engine is a highly accurate and cross-platform SDK optimized for running compressed large language
-models. picoLLM Inference Engine is:
+Omnilitycs AI is a crypto-native intelligence layer built on top of on-chain data
 
-- Accurate; picoLLM Compression improves GPTQ by [significant margins](https://picovoice.ai/blog/picollm-towards-optimal-llm-quantization/)
-- Private; LLM inference runs 100% locally.
-- Cross-Platform
-    - Linux (x86_64), macOS (arm64, x86_64), and Windows (x86_64, arm64)
-    - Raspberry Pi (5 and 4)
-    - Android and iOS
-    - Chrome, Safari, Edge, and Firefox
-- Runs on CPU and GPU
-- Free for open-weight models
+It turns wallets, tokens, portfolios, and project activity into structured metrics, AI explanations, alerts, and programmable workflows that can be used in the app, in team operations, or inside your own backend
 
-## Table of Contents
+> [!IMPORTANT]
+> Omnilitycs is non-custodial by design  
+> It never stores private keys and never moves funds without an explicit user signature
 
-- [picoLLM](#picollm-inference-engine)
-    - [Table of Contents](#table-of-contents)
-    - [Showcases](#showcases)
-      - [Raspberry Pi](#raspberry-pi)
-      - [Android](#android)
-      - [iOS](#ios)
-      - [Cross-Browser Local LLM](#cross-browser-local-llm)
-      - [Llama-3-70B-Instruct on GeForce RTX 4090](#llama-3-70b-instruct-on-geforce-rtx-4090)
-      - [Local LLM-Powered Voice Assistant on Raspberry Pi](#local-llm-powered-voice-assistant-on-raspberry-pi)
-      - [Local Llama-3-8B-Instruct Voice Assistant on CPU](#local-llama-3-8b-instruct-voice-assistant-on-cpu)
-    - [Accuracy](#accuracy)
-    - [Models](#models)
-    - [AccessKey](#accesskey)
-    - [Demos](#demos)
-        - [Python](#python-demos)
-        - [.NET](#net-demos)
-        - [Node.js](#nodejs-demos)
-        - [Android](#android-demos)
-        - [iOS](#ios-demos)
-        - [Web](#web-demos)
-        - [C](#c-demos)
-    - [SDKs](#sdks)
-        - [Python](#python-sdk)
-        - [.NET](#net-sdk)
-        - [Node.js](#nodejs-sdk)
-        - [Android](#android-sdk)
-        - [iOS](#ios-sdk)
-        - [Web](#web-sdk)
-        - [C](#c-sdk)
-    - [Releases](#releases)
+### What the system is built to do
 
-## Showcases
+| Domain | What Omnilitycs delivers |
+|---|---|
+| Traders | Holdings, positions, PnL, exposure, wallet behavior, token and flow context |
+| Teams | Treasury monitoring, holder tracking, contract activity, project dashboards, shared alerts |
+| Developers | Data APIs, Agents APIs, webhooks, SDK flows, event-driven integrations |
 
-### Raspberry Pi
+> [!TIP]
+> The same metrics layer powers the UI, agents, alerts, and APIs  
+> This keeps numbers consistent across every surface
 
-[![Local LLM on Raspberry Pi](https://img.youtube.com/vi/CeKPXZ_8hkI/0.jpg)](https://www.youtube.com/watch?v=CeKPXZ_8hkI)
+---
 
-### Android
+## Operational Flow
 
-[![How to Run a Local LLM on Android](https://img.youtube.com/vi/XeUMkue-5lI/0.jpg)](https://www.youtube.com/watch?v=XeUMkue-5lI)
+Omnilitycs follows a simple end-to-end path: raw chain activity comes in, gets normalized into a shared metrics layer, is interpreted by AI agents, and then becomes outputs that humans and systems can act on
 
-### iOS
-
-[![How to Run a Local LLM on iOS](https://img.youtube.com/vi/dNK5esdkI0Y/0.jpg)](https://www.youtube.com/watch?v=dNK5esdkI0Y)
-
-### Cross-Browser Local LLM
-
-[Live Demo — Works offline!](https://picovoice.ai/picollm/)
-
-### Llama-3-70B-Instruct on GeForce RTX 4090
-
-[![Llama-3-70B-Instruct on GeForce RTX 4090](https://img.youtube.com/vi/4mcVwbOOIqk/0.jpg)](https://www.youtube.com/watch?v=4mcVwbOOIqk)
-
-### Local LLM-Powered Voice Assistant on Raspberry Pi
-
-[![Local LLM-Powered Voice Assistant on Raspberry Pi](https://img.youtube.com/vi/GEndT3RGRvw/0.jpg)](https://www.youtube.com/watch?v=GEndT3RGRvw)
-
-### Local Llama-3-8B-Instruct Voice Assistant on CPU
-
-[![Local Llama-3-8B-Instruct Voice Assistant on CPU](https://img.youtube.com/vi/uV0GlXDFSPw/0.jpg)](https://www.youtube.com/watch?v=uV0GlXDFSPw)
-
-## Accuracy
-
-picoLLM Compression is a novel large language model (LLM) quantization algorithm developed within Picovoice. Given a task-specific cost function, picoLLM Compression automatically learns the optimal bit allocation strategy across and within LLM's weights. Existing techniques require a fixed bit allocation scheme, which is subpar.
-
-For example, picoLLM Compression recovers MMLU score degradation of widely adopted GPTQ by 91%, 99%, and 100% at 2, 3,
-and 4-bit settings. The figure below depicts the MMLU comparison between picoLLM and GPTQ for Llama-3-8b [[1]](https://picovoice.ai/blog/picollm-towards-optimal-llm-quantization/).
-
-![picoLLM Compression vs GPTQ MMLU scores when applied to Llama-3-8B](./resources/mmlu-llama-3-8b.svg)
-
-## Models
-
-picoLLM Inference Engine supports the following open-weight models. The models are on
-[Picovoice Console](https://console.picovoice.ai/).
-
-- Gemma
-    - `gemma-2b`
-    - `gemma-2b-it`
-    - `gemma-7b`
-    - `gemma-7b-it`
-- Llama-2
-    - `llama-2-7b`
-    - `llama-2-7b-chat`
-    - `llama-2-13b`
-    - `llama-2-13b-chat`
-    - `llama-2-70b`
-    - `llama-2-70b-chat`
-- Llama-3
-    - `llama-3-8b`
-    - `llama-3-8b-instruct`
-    - `llama-3-70b`
-    - `llama-3-70b-instruct`
-- Llama-3.2
-    - `llama3.2-1b-instruct`
-    - `llama3.2-3b-instruct`
-- Mistral
-    - `mistral-7b-v0.1`
-    - `mistral-7b-instruct-v0.1`
-    - `mistral-7b-instruct-v0.2`
-- Mixtral
-    - `mixtral-8x7b-v0.1`
-    - `mixtral-8x7b-instruct-v0.1`
-- Phi-2
-    - `phi2`
-- Phi-3
-    - `phi3`
-- Phi-3.5
-  - `phi3.5`
-
-## AccessKey
-
-AccessKey is your authentication and authorization token for deploying Picovoice SDKs, including picoLLM. Anyone who is using Picovoice needs to have a valid AccessKey. You must keep your AccessKey secret. You would need internet connectivity to validate your AccessKey with Picovoice license servers, even though the LLM inference is running 100% offline.
-
-AccessKey also verifies that your usage is within the limits of your account. You can see your usage limits and real-time usage on your [Picovoice Console](https://console.picovoice.ai/signup) Profile. To continue using Picovoice after your trial or renew and adjust your usage limits, please reach out to our [Enterprise Sales Team](https://picovoice.ai/contact/) or your existing Picovoice contact.
-
-## Demos
-
-### Python Demos
-
-Install the demo package:
-
-```console
-pip3 install picollmdemo
+```mermaid
+flowchart LR
+    A[On-chain inputs<br/>wallets • tokens • contracts • treasuries] --> B[Ingestion & normalization]
+    B --> C[Unified metrics layer]
+    C --> D[AI explanations & agents]
+    C --> E[Dashboards & portfolio views]
+    C --> F[Alerts & watchlists]
+    D --> G[Summaries • risk signals • narratives]
+    F --> H[In-app notifications]
+    D --> I[Webhooks • APIs • SDK usage]
+    G --> J[Human decisions]
+    I --> K[External systems and automations]
 ```
 
-Run the following in the terminal:
+### Input → Stage → Output
 
-```console
-picollm_demo_completion --access_key ${ACCESS_KEY} --model_path ${MODEL_PATH} --prompt ${PROMPT}
+| Inputs | Processing stages | Outputs |
+|---|---|---|
+| Wallet addresses, token activity, project contracts, treasury flows | Ingestion, normalization, aggregation, enrichment, AI interpretation | Dashboards, risk views, summaries, alerts, webhook events, API responses |
+| User scopes, watchlists, thresholds, agent configs | Rule evaluation, scheduling, filtering, prioritization | Daily briefs, wallet risk summaries, token flow narratives, project event digests |
+
+> [!NOTE]
+> AI explanations are grounded in structured on-chain metrics rather than isolated text prompts  
+> The model explains what the system measures instead of inventing a parallel story
+
+---
+
+## Core Engines
+
+Omnilitycs is organized around a few core engines that keep the system usable for both humans and machines
+
+### 1) Metrics Engine
+
+This engine builds the canonical on-chain view used everywhere in the product
+
+It computes wallet activity, holdings, positions, exposure, PnL where reconstructable, token liquidity and flows, holder concentration, and project-level movement around treasuries and contracts
+
+### 2) Agent Engine
+
+The agent layer reads the metrics engine and turns changes into judgments, summaries, and machine-readable outputs
+
+| Agent type | Primary role | Typical output |
+|---|---|---|
+| Wallet Risk | Reviews positions, exposure, and recent behavior | Daily risk summary and top issues |
+| Token Flows & Holders | Detects inflows, whale shifts, distribution changes | Change summary and flow labels |
+| Portfolio Health | Evaluates concentration and portfolio-level pressure | Snapshot of portfolio risk and positions needing attention |
+| Project Daily Brief | Tracks treasury, holders, and protocol activity | Team-facing daily brief with follow-ups |
+| Alert Tuner | Improves noisy or late alerting setups | Suggested threshold and routing changes |
+
+### 3) Alerting Engine
+
+The alerting system watches thresholds, agent outputs, and event conditions, then routes important changes to the right place
+
+It supports in-app delivery first, with messaging and webhook fan-out for more advanced workflows
+
+### 4) Integration Engine
+
+This is the programmable surface for developers and operators
+
+It exposes portfolio data, token and wallet views, agent runs, webhook delivery, and usage state so Omnilitycs can plug into bots, backends, and internal pipelines
+
+---
+
+## Control Surface
+
+Omnilitycs is designed to be controllable rather than opaque
+
+You can choose what is monitored, how the system interprets it, how loud it should be, and where outputs should go
+
+### Main control areas
+
+| Control area | What you configure |
+|---|---|
+| Scope | Wallets, token lists, project addresses, treasuries, workspaces |
+| Filters | Minimum size, time windows, chain selection, allowlists and ignore rules |
+| Agent logic | Risk-focused, flow-focused, narrative-focused, daily summary modes |
+| Outputs | UI summaries, JSON payloads, risk bullets, labels, webhook events |
+| Delivery | In-app, email, Telegram, Discord, webhook endpoints |
+| Permissions | Viewer, editor, admin, key scopes, workspace boundaries |
+
+> [!WARNING]
+> Agents can observe, summarize, alert, and push structured outputs  
+> They do not custody funds, sign transactions, or auto-trade on your behalf
+
+### Typical control model
+
+```text
+scope → filters → agent profile → thresholds → output mode → delivery route
 ```
 
-Replace `${ACCESS_KEY}` with yours obtained from Picovoice Console, `${MODEL_PATH}` with the path to a model file
-downloaded from Picovoice Console, and `${PROMPT}` with a prompt string.
+This makes the system understandable for traders, auditable for teams, and scriptable for developers
 
-For more information about Python demos go to [demo/python](demo/python/README.md).
+---
 
-### .NET Demos
+## Usage Tiers
 
-From [demo/dotnet/PicoLLMDemo](demo/dotnet/PicoLLMDemo) build and run the demo:
+### Basic
 
-```console
-dotnet build -c CompletionDemo.Release
-dotnet run -c CompletionDemo.Release -- --access_key ${ACCESS_KEY} --model_path ${MODEL_PATH} --prompt ${PROMPT}
+The basic layer is for quick onboarding and everyday manual usage
+
+| Mode | Best for | Includes |
+|---|---|---|
+| Local / quick start | Solo traders and first-time teams | Wallet connection, portfolio view, token and wallet insights, basic alerts, default agents |
+
+### Advanced
+
+The advanced layer is for users who want more tailored workflows
+
+| Mode | Best for | Includes |
+|---|---|---|
+| Customization | Power users, desks, research teams | Custom watchlists, tuned thresholds, custom agents, richer routing, broader scopes |
+
+### Production
+
+The production layer is where Omnilitycs becomes part of operating infrastructure
+
+| Mode | Best for | Includes |
+|---|---|---|
+| Scaling and reliability | Protocol teams, backend systems, serious operators | Workspace roles, APIs, webhooks, observability, CI/CD handling, usage governance |
+
+> [!CAUTION]
+> Heavy usage should be planned around credits, alert volume, webhook handling, and API rate limits  
+> Production setups need clear ownership of keys, routing, and incident response
+
+---
+
+## Architecture Notes
+
+Omnilitycs is a layered system rather than a single interface
+
+### High-level topology
+
+```mermaid
+flowchart TB
+    A[Supported chains and public on-chain data] --> B[Ingestion workers]
+    B --> C[Normalization and enrichment]
+    C --> D[Metrics layer]
+    D --> E[Web app]
+    D --> F[Agents runtime]
+    D --> G[Alerts and watchlists]
+    D --> H[APIs and SDKs]
+    F --> I[Summaries and narratives]
+    G --> J[Notifications and integrations]
+    H --> K[External services, bots, and data pipelines]
 ```
 
-Replace `${ACCESS_KEY}` with yours obtained from Picovoice Console, `${MODEL_PATH}` with the path to a model file
-downloaded from Picovoice Console, and `${PROMPT}` with a prompt string.
+### Main components
 
-For more information about .NET demos go to [demo/dotnet](demo/dotnet).
+| Layer | Responsibility |
+|---|---|
+| Ingestion | Reads supported chain activity and wallet or contract data |
+| Processing | Normalizes raw events and aggregates them into usable metrics |
+| Intelligence | Generates AI summaries, narratives, and agent outputs |
+| Delivery | Powers UI views, alerts, exports, APIs, and webhooks |
+| Governance | Handles workspaces, permissions, keys, credits, and plan logic |
 
-### Node.js Demos
+### Stack expectations
 
-Install the demo package:
+The system is documented as a web-first platform with messaging integrations, HTTP APIs, SDK access, webhook delivery, workspace controls, and production-friendly operational boundaries
 
-```console
-yarn global add @picovoice/picollm-node-demo
-```
+That means the architecture should be read as platform infrastructure, not as a thin dashboard on top of RPC calls
 
-Run the following in the terminal:
+---
 
-```console
-picollm-completion-demo --access_key ${ACCESS_KEY} --model_path ${MODEL_PATH} --prompt ${PROMPT}
-```
+## Reality Check
 
-Replace `${ACCESS_KEY}` with yours obtained from Picovoice Console, `${MODEL_PATH}` with the path to a model file
-downloaded from Picovoice Console, and `${PROMPT}` with a prompt string.
+Omnilitycs is built to reduce noise and improve reaction speed, but it is not a magic profit engine
 
-For more information about Node.js demos go to [Node.js demo](./demo/nodejs).
+### What to expect realistically
 
-### Android Demos
+| Area | Realistic expectation |
+|---|---|
+| Analytics | Stronger visibility into wallets, tokens, positions, and project-level movement |
+| AI summaries | Faster interpretation of changes, not infallible truth |
+| Alerts | Better timing and awareness, but still dependent on thresholds and routing quality |
+| Agents | Repeatable monitoring and structured outputs, not autonomous financial decisions |
+| Integrations | Useful for pipelines and automations, but still require your own safeguards |
 
-Using Android Studio, open the [Completion demo](demo/android/Completion) as an Android project, copy your AccessKey into MainActivity.java, and run the application.
+> [!NOTE]
+> AI outputs can be incomplete, delayed, or wrong in edge cases  
+> Important decisions should always be verified against the underlying data
 
-To learn about how to use picoLLM in a chat application, try out the [Chat demo](demo/android/Chat).
+### Known caveats
 
-For more information about Android demos go to [demo/android](demo/android/README.md).
+- PnL reconstruction can depend on available data quality and position complexity
+- Wallet labeling and behavioral interpretation may be partial
+- Alert quality is heavily influenced by thresholds and scope design
+- High-noise universes need careful filtering before they become operationally useful
 
-### iOS Demos
+---
 
-To run the completion demo, go to [demo/ios/Completion](demo/ios/Completion) and run:
+## Run / Deploy
 
-```console
-pod install
-```
+### Local or internal usage
 
-Replace `let ACCESS_KEY = "${YOUR_ACCESS_KEY_HERE}"` in the file [VieModel.swift](demo/ios/Completion/PicoLLMCompletionDemo/ViewModel.swift) with your AccessKey obtained from [Picovoice Console](https://console.picovoice.ai/).
+Use Omnilitycs as a product layer when the goal is fast insight, manual monitoring, or team visibility
 
-Then, using [Xcode](https://developer.apple.com/xcode/), open the generated `PicoLLMCompletionDemo.xcworkspace` and run the application.
+Typical flow:
+1. Connect wallets or add project addresses
+2. Build a first dashboard
+3. Enable default agents
+4. Add critical alerts
+5. Review summaries and refine thresholds
 
-To learn about how to use picoLLM in a chat application, try out the [Chat demo](demo/ios/Chat).
+### Developer integration
 
-For more information about iOS demos go to [demo/ios](demo/ios/README.md).
+Use the platform API surface when Omnilitycs needs to become part of your own systems
 
-### Web Demos
+| Deploy path | Practical use |
+|---|---|
+| API key + SDK | Portfolio pulls, token and wallet summaries, agent execution |
+| Webhooks | Push events into bots, automations, and internal services |
+| Workspace setup | Team access, roles, alert routing, shared views |
+| Production controls | Key rotation, monitoring, credit oversight, staged rollout of agent configs |
 
-From [demo/web](demo/web) run the following in the terminal:
+### Deployment mindset
 
-```console
-yarn
-yarn start
-```
+For serious environments, treat agent definitions, rules, and webhook routing as versioned infrastructure
 
-(or)
+Keep configurations reviewed, staged, observable, and easy to roll back
 
-```console
-npm install
-npm run start
-```
+> [!IMPORTANT]
+> Omnilitycs should sit inside a controlled production setup  
+> Real actions, key management, and execution logic should remain on your own infrastructure
 
-Open `http://localhost:5000` in your browser to try the demo.
+---
 
-### C Demos
+## System Snapshot
 
-Build the demo:
+| Property | Omnilitycs AI |
+|---|---|
+| Product type | On-chain analytics and automation platform |
+| Core abstraction | Unified on-chain metrics layer |
+| Main intelligence unit | Agents |
+| Primary outputs | Dashboards, summaries, alerts, APIs, webhooks |
+| Security posture | Non-custodial, role-scoped, key-based, webhook-signed |
+| Economic layer | Plans, credits, and $OMNI-based usage mechanics |
 
-```console
-cmake -S demo/c/ -B demo/c/build && cmake --build demo/c/build
-```
+---
 
-Run the demo:
+## Final Read
 
-```console
-./demo/c/build/picollm_demo_completion -a ${ACCESS_KEY} -l ${LIBRARY_PATH} -m ${MODEL_FILE_PATH} -p ${PROMPT}
-```
+Omnilitycs AI is best understood as an operating layer for on-chain intelligence
 
-Replace `${ACCESS_KEY}` with yours obtained from Picovoice Console, `${LIBRARY_PATH}` with the path to the shared
-library file located in the [lib](lib) directory, `${MODEL_FILE_PATH}` with the path to a model file downloaded from
-Picovoice Console, and `${PROMPT}` with a prompt string.
-
-For more information about C demos go to [demo/c](demo/c/README.md).
-
-## SDKs
-
-### Python SDK
-
-Install the Python SDK:
-
-```console
-pip3 install picollm
-```
-
-Create an instance of the engine and generate a prompt completion:
-
-```python
-import picollm
-
-pllm = picollm.create(
-    access_key='${ACCESS_KEY}',
-    model_path='${MODEL_PATH}')
-
-res = pllm.generate('${PROMPT}')
-print(res.completion)
-```
-
-Replace `${ACCESS_KEY}` with yours obtained from Picovoice Console, `${MODEL_PATH}` to the path to a model file
-downloaded from Picovoice Console, and `${PROMPT}` to a prompt string. Finally, when done be sure to explicitly release
-the resources using `pllm.release()`.
-
-### .NET SDK
-
-Install the .NET SDK using NuGet or the dotnet CLI:
-
-```console
-dotnet add package PicoLLM
-```
-
-Create an instance of the engine and generate a prompt completion:
-
-```csharp
-using Pv;
-
-PicoLLM pllm = PicoLLM.Create("${ACCESS_KEY}", "${MODEL_PATH}");
-
-PicoLLMCompletion res = pllm.Generate('${PROMPT}');
-Console.WriteLine(res.Completion);
-```
-
-Replace `${ACCESS_KEY}` with yours obtained from Picovoice Console, `${MODEL_PATH}` to the path to a model file
-downloaded from Picovoice Console, and `${PROMPT}` to a prompt string.
-
-`PicoLLM` will have its resources freed by the garbage collector, but to have resources freed immediately after use,
-wrap it in a using statement or call `.Dispose()` directly:
-
-```csharp
-using(PicoLLM pllm = PicoLLM.Create(accessKey, modelPath))
-{
-    // .. picoLLM usage here
-}
-```
-
-### Node.js SDK
-
-Install the Node.js SDK:
-
-```console
-yarn add @picovoice/picollm-node
-```
-
-Create instances of the picoLLM class:
-
-```javascript
-const { PicoLLM } = require("@picovoice/picollm-node");
-const pllm = new PicoLLM('${ACCESS_KEY}', '${MODEL_PATH}');
-
-const res = await pllm.generate('${PROMPT}');
-console.log(res.completion);
-```
-
-Replace `${ACCESS_KEY}` with yours obtained from Picovoice Console, `${MODEL_PATH}` to the path to a model file
-downloaded from Picovoice Console, and `${PROMPT}` to a prompt string. Finally, when done be sure to explicitly release
-the resources using `pllm.release()`.
-
-### Android SDK
-
-Create an instance of the inference engine and generate a prompt completion:
-
-```java
-import ai.picovoice.picollm.*;
-
-try {
-    PicoLLM picollm = new PicoLLM.Builder()
-        .setAccessKey("${ACCESS_KEY}")
-        .setModelPath("${MODEL_PATH}")
-        .build();
-    PicoLLMCompletion res = picollm.generate(
-        "${PROMPT}",
-        new PicoLLMGenerateParams.Builder().build());
-} catch (PicoLLMException e) { }
-```
-
-Replace `${ACCESS_KEY}` with your `AccessKey` from Picovoice Console, `${MODEL_PATH}` to the path to a model file
-downloaded from Picovoice Console, and `${PROMPT}` to a prompt string. Finally, when done be sure to explicitly release
-the resources using `picollm.delete()`.
-
-### iOS SDK
-
-Create an instance of the engine and generate a prompt completion:
-
-```swift
-import PicoLLM
-
-let pllm = try PicoLLM(
-    accessKey: "${ACCESS_KEY}",
-    modelPath: "${MODEL_PATH}")
-
-let res = pllm.generate(prompt: "${PROMPT}")
-print(res.completion)
-```
-
-Replace `${ACCESS_KEY}` with yours obtained from Picovoice Console, `${MODEL_PATH}` to the path to a model file
-downloaded from Picovoice Console, and `${PROMPT}` to a prompt string.
-
-### Web SDK
-
-Install the web SDK using yarn:
-
-```console
-yarn add @picovoice/picollm-web
-```
-
-or using npm:
-
-```console
-npm install --save @picovoice/picollm-web
-```
-
-Create an instance of the engine using `PicoLLMWorker` and transcribe an audio file:
-
-```typescript
-import { PicoLLMWorker } from "@picovoice/picollm-web";
-
-const picoLLMModel = {
-  modelFile: '${MODEL_FILE}'
-}
-
-const picoLLM = await PicoLLMWorker.create(
-  "${ACCESS_KEY}",
-  picoLLMModel
-);
-
-const res = await picoLLM.generate(`${PROMPT}`);
-console.log(res.completion);
-```
-
-Replace `${ACCESS_KEY}` with yours obtained from [Picovoice Console](https://console.picovoice.ai/), `${MODEL_FILE}` with the contents of the model file as `File`, `Blob` or `URL (path to model file)` format and `${PROMPT}` with a prompt string. Finally, when done release the resources using `picoLLM.release()`.
-
-### C SDK
-
-Create an instance of the engine and generate a prompt completion:
-
-```c
-pv_picollm_t *pllm = NULL;
-pv_picollm_init(
-    "${ACCESS_KEY}",
-    "${MODEL_PATH}",
-    "best",
-    &pllm);
-
-pv_picollm_usage_t usage;
-pv_picollm_endpoint_t endpoint;
-int32_t num_completion_tokens;
-pv_picollm_completion_token_t *completion_tokens;
-char *output;
-pv_picollm_generate(
-    pllm,
-    "${PROMPT}",
-    -1,    // completion_token_limit
-    NULL,  // stop_phrases
-    0,     // num_stop_phrases
-    -1,    // seed
-    0.f,   // presence_penalty
-    0.f,   // frequency_penalty
-    0.f,   // temperature
-    1.f,   // top_p
-    0,     // num_top_choices
-    NULL,  // stream_callback
-    NULL,  // stream_callback_context
-    &usage,
-    &endpoint,
-    &completion_tokens,
-    &num_completion_tokens,
-    &output);
-printf("%s\n", output);
-```
-
-Replace `${ACCESS_KEY}` with yours obtained from Picovoice Console, `${MODEL_PATH}` to the path to a model file
-downloaded from Picovoice Console, and `${PROMPT}` to a prompt string.
-
-Finally, when done, be sure to release the resources explicitly:
-
-```c
-pv_picollm_delete(pllm);
-```
-
-## Releases
-
-### v2.0.0 - December 18, 2025
-
-- Improved engine performance
-- Improved support for running on GPU or multiple CPU cores
-
-### v1.3.0 - March 14th, 2025
-
-- Performance improvements
-- Significant performance improvements for iOS and Web
-
-### v1.2.0 - November 26th, 2024
-
-- Performance improvements
-- Added support for phi3.5
-
-### v1.1.0 - October 1st, 2024
-
-- Added `interrupt()` function for halting completion generation early
-- Performance improvements
-- Added support for phi3
-- Bug fixes
-
-### v1.0.0 - May 28th, 2024
-
-- Initial release
+It helps traders read their exposure, helps teams monitor project reality, and helps developers turn on-chain context into systems and workflows without rebuilding the same analytics foundation from scratch
